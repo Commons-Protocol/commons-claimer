@@ -12,6 +12,19 @@ export const formatTime = (time: number) => {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 };
 
+export const formatBlockTimestamp = (blockTimestamp: string): string => {
+  // Convert string to number and multiply by 1000 to get milliseconds
+  const date = new Date(Number(blockTimestamp) * 1000);
+
+  // Get month, day, and year
+  const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Add 1 because months are 0-indexed
+  const day = date.getDate().toString().padStart(2, "0");
+  const year = date.getFullYear();
+
+  // Return formatted date string
+  return `${month}/${day}/${year}`;
+};
+
 export const formatTokenAmount = (
   amount: any,
   decimals: number,
@@ -28,3 +41,8 @@ export const formatTokenAmount = (
   )}`;
   return parseFloat(result).toFixed(displayDecimals);
 };
+
+export function sliceAddress(address: string) {
+  if (typeof address !== "string") return "";
+  return address.slice(0, 6) + "..." + address.slice(-4);
+}
