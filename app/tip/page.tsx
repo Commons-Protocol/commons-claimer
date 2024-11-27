@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
+import { DooglyTippingButton } from "@doogly/doogly-donate-component";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery } from "@tanstack/react-query";
 import { isAddress } from "ethers";
@@ -101,8 +102,6 @@ export default function TipPage() {
     },
     refetchInterval: 1000,
   });
-
-  console.log("attestationData", attestationData);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -293,6 +292,8 @@ export default function TipPage() {
     }
   }, [isTipped, IsErrorTipped, tipHash, toast]);
 
+  const dooglyRecipient = form.watch("recipient");
+
   return (
     <div className="flex flex-col gap-4">
       <div className="w-[500px] mx-auto">
@@ -419,6 +420,26 @@ export default function TipPage() {
                 </div>
               </form>
             </Form>
+            <DooglyTippingButton
+              key={dooglyRecipient}
+              buttonText="Tip with Doogly"
+              modalTitle="Make a Donation"
+              config={{
+                destinationChain: "celo",
+                destinationAddress:
+                  "0xFa1aD6310C6540c5430F9ddA657FCE4BdbF1f4df",
+                receiverAddress: dooglyRecipient,
+                destinationOutputTokenAddress:
+                  "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e",
+              }}
+              buttonClassName="w-full"
+              modalStyles={{
+                backgroundColor: "white",
+                headingColor: "black",
+                textColor: "white",
+                buttonColor: "black",
+              }}
+            />
           </CardContent>
         </Card>
       </div>
