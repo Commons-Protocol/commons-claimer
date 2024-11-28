@@ -301,8 +301,8 @@ export default function TipPage() {
   const dooglyRecipient = form.watch("recipient");
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="w-[500px] mx-auto">
+    <div className="flex flex-col gap-4 w-full p-4">
+      <div className="w-full max-w-[500px] mx-auto">
         <Card>
           <CardHeader>
             <CardTitle>Tip to commoners with comment</CardTitle>
@@ -358,14 +358,14 @@ export default function TipPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <div className="flex items-center space-x-4 gap-2">
+                        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
                           <Input
                             id="amount"
                             placeholder="0"
-                            className="border border-gray-300 rounded-md p-2"
+                            className="border border-gray-300 rounded-md p-2 min-w-[120px]"
                             {...field}
                           />
-                          $COMMONS
+                          <span className="whitespace-nowrap">$COMMONS</span>
                         </div>
                       </FormControl>
                       <FormDescription>Amount to tip</FormDescription>
@@ -475,7 +475,7 @@ export default function TipPage() {
           </CardContent>
         </Card>
       </div>
-      <div className="grid grid-cols-3 gap-4 w-full p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
         {isAttestationLoading &&
           Array.from({ length: 3 }).map((_, index) => (
             <SkeletonTipAttestation key={index} />
