@@ -426,7 +426,7 @@ export default function TipPage() {
                 </div>
               </form>
             </Form>
-            <div className="text-center flex flex-col gap-1">
+            {/* <div className="text-center flex flex-col gap-1">
               <p className="items-center my-2">or</p>
 
               <DooglyTippingButton
@@ -471,7 +471,7 @@ export default function TipPage() {
                   </Tooltip>
                 </TooltipProvider>
               </div>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </div>
