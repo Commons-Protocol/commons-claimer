@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery } from "@tanstack/react-query";
 import { isAddress } from "ethers";
 import request, { gql } from "graphql-request";
-import { Loader2 } from "lucide-react";
+import { HelpCircle, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { parseUnits } from "viem";
 import {
@@ -42,6 +42,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ToastAction } from "@/components/ui/toast";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useToast } from "@/components/ui/use-toast";
 
 import { commonsConfig } from "@/abis/commons";
@@ -420,26 +426,52 @@ export default function TipPage() {
                 </div>
               </form>
             </Form>
-            <DooglyTippingButton
-              key={dooglyRecipient}
-              buttonText="Tip with Doogly"
-              modalTitle="Make a Donation"
-              config={{
-                destinationChain: "celo",
-                destinationAddress:
-                  "0xFa1aD6310C6540c5430F9ddA657FCE4BdbF1f4df",
-                receiverAddress: dooglyRecipient,
-                destinationOutputTokenAddress:
-                  "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e",
-              }}
-              buttonClassName="w-full"
-              modalStyles={{
-                backgroundColor: "white",
-                headingColor: "black",
-                textColor: "white",
-                buttonColor: "black",
-              }}
-            />
+            <div className="text-center flex flex-col gap-1">
+              <p className="items-center my-2">or</p>
+
+              <DooglyTippingButton
+                key={dooglyRecipient}
+                buttonText="Tip with Doogly"
+                modalTitle="Make a Donation"
+                config={{
+                  destinationChain: "celo",
+                  destinationAddress:
+                    "0xFa1aD6310C6540c5430F9ddA657FCE4BdbF1f4df",
+                  receiverAddress: dooglyRecipient,
+                  destinationOutputTokenAddress:
+                    "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e",
+                }}
+                buttonClassName="w-full"
+                modalStyles={{
+                  backgroundColor: "white",
+                  headingColor: "black",
+                  textColor: "white",
+                  buttonColor: "black",
+                }}
+              />
+
+              <div className="text-center">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <div className="flex items-center gap-2 text-gray-500 text-sm">
+                        <span>what is Doogly?</span>
+                        <HelpCircle className="h-4 w-4 " />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>
+                        {`Doogly is a cross-chain donation service that you can 
+    send any tokens from any blockchain.`}
+                        <br />
+                        {`Recipients can receive their preferred tokens 
+    on their chosen chain.`}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
