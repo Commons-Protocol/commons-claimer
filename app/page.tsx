@@ -24,6 +24,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -87,15 +88,13 @@ export default function CommonsTokenClaimPage() {
         title: "Tx successfully confirmed",
         description: (
           <div>
-            Copy
-            <br />
             <Link
               href="https://app.ubeswap.org/#/stakes/0x8585A611521717Ffe7d93cF264DbE936E484DBa0"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"
             >
-              Go to staking
+              Go to staking on Ubeswap
             </Link>
           </div>
         ),
@@ -176,7 +175,8 @@ export default function CommonsTokenClaimPage() {
               </div>
             )}
             {account.isConnected &&
-               (
+              tokenBalance.data &&
+              tokenBalance.data.value > BigInt(0) && (
                 <Alert>
                   <AlertTitle>Earn extra rewards</AlertTitle>
                   <AlertDescription>
@@ -256,21 +256,16 @@ export default function CommonsTokenClaimPage() {
                 </p>
               </div>
             )}
-          </CardContent>
 
-          <hr
-            style={{
-              borderTop: "1px solid #9b9c9e",
-              margin: "15px 15px 15px 0",
-              paddingBottom: "8px",
-            }}
-          />
-          <CardDescription style={{ fontSize: "12px", textAlign: "center" }}>
-            Commons protocol is a community-driven initiative designed to
-            incentivize the sustainable development and protection of shared
-            resources/commons. It aims to create systems that restore,
-            regenerate, and replenish the natural and social capital.
-          </CardDescription>
+            <Separator className="my-4" />
+
+            <CardDescription className="text-xs text-center">
+              Commons protocol is a community-driven initiative designed to
+              incentivize the sustainable development and protection of shared
+              resources/commons. It aims to create systems that restore,
+              regenerate, and replenish the natural and social capital.
+            </CardDescription>
+          </CardContent>
         </Card>
 
         <br />
