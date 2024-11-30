@@ -89,8 +89,13 @@ export default function CommonsTokenClaimPage() {
           <div>
             Copy
             <br />
-            <Link href="/stake" className="text-blue-500 hover:underline">
-              Go to staking page
+            <Link
+              href="https://app.ubeswap.org/#/stakes/0x8585A611521717Ffe7d93cF264DbE936E484DBa0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              Go to staking
             </Link>
           </div>
         ),
@@ -128,7 +133,7 @@ export default function CommonsTokenClaimPage() {
   return (
     <main>
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-gray-100 p-4">
-      <br/>
+        <br />
         <Card className="w-[350px]">
           <CardHeader className="text-center items-center">
             <CardTitle>Commons Builder Income</CardTitle>
@@ -170,25 +175,26 @@ export default function CommonsTokenClaimPage() {
                 )}
               </div>
             )}
-             {account.isConnected &&
-              tokenBalance.data &&
-              tokenBalance.data.value > BigInt(0) && (
+            {account.isConnected &&
+               (
                 <Alert>
-                  <AlertTitle>Your Builder Score soon...</AlertTitle>
+                  <AlertTitle>Earn extra rewards</AlertTitle>
                   <AlertDescription>
-                    Get your score from TalentProtocol to increase your builder income.{" "}
+                    Get additional income by staking your COMMONS tokens.
                     <Link
-                      href="https://passport.talentprotocol.com/"
+                      href="https://app.ubeswap.org/#/stakes/0x8585A611521717Ffe7d93cF264DbE936E484DBa0"
                       className="font-medium underline underline-offset-4"
+                      rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <br/><br/>Create your Talent Passport
+                      <br />
+                      <br />
+                      Stake on Ubeswap
                     </Link>
                   </AlertDescription>
                 </Alert>
-              )} 
+              )}
             {!whitelisted.data && (
-              
               <Button
                 style={{
                   padding: "25px 15px",
@@ -268,32 +274,40 @@ export default function CommonsTokenClaimPage() {
         </Card>
 
         <br />
-        <p style={{fontSize: '12px', color: '#777777'}}>
-                    
-                
-                    <a href="https://github.com/Commons-Protocol"
-                       target="_blank" rel="noopener noreferrer">
-                        GitHub
-                
-                    </a>
-
-                    &nbsp; | &nbsp;
-
-                    <a href="https://guild.xyz/commons"
-                       target="_blank" rel="noopener noreferrer">
-                        Guild
-                
-                    </a>
-
-                    &nbsp; | &nbsp;
-                    <a href="https://app.uniswap.org/explore/tokens/celo/0x7b97031b6297bc8e030b07bd84ce92fea1b00c3e"
-                       target="_blank" rel="noopener noreferrer">
-                        $COMMONS on Uniswap
-                        <Image style={{display: 'inline-block'}} color="#9b9c9e" src="/hyperlink.svg" alt="Twitter"
-                               width={32} height={32}/>
-                    </a>
-                    </p>
-                <br />
+        <p style={{ fontSize: "12px", color: "#777777" }}>
+          <a
+            href="https://github.com/Commons-Protocol"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          &nbsp; | &nbsp;
+          <a
+            href="https://guild.xyz/commons"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Guild
+          </a>
+          &nbsp; | &nbsp;
+          <a
+            href="https://app.uniswap.org/explore/tokens/celo/0x7b97031b6297bc8e030b07bd84ce92fea1b00c3e"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            $COMMONS on Uniswap
+            <Image
+              style={{ display: "inline-block" }}
+              color="#9b9c9e"
+              src="/hyperlink.svg"
+              alt="Twitter"
+              width={32}
+              height={32}
+            />
+          </a>
+        </p>
+        <br />
       </div>
     </main>
   );
