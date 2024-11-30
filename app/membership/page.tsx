@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Coins, Flame, Loader2, RefreshCw } from "lucide-react";
 import Image from "next/image";
 import { parseUnits } from "viem";
