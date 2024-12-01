@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Coins, Flame, Loader2, RefreshCw } from "lucide-react";
 import Image from "next/image";
 import { parseUnits } from "viem";
@@ -24,6 +23,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -264,7 +264,7 @@ export default function CommonsTokenStakingPage() {
   return (
     <main>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <br/>
+        <br />
         <Card className="w-[350px]">
           <CardHeader className="text-center items-center">
             <CardTitle>Membership NFT</CardTitle>
@@ -390,24 +390,17 @@ export default function CommonsTokenStakingPage() {
                 )}
               </>
             )}
+
+            <Separator className="my-4" />
+
+            <CardDescription className="text-xs text-center">
+              Commons protocol is a community-driven initiative designed to
+              incentivize the sustainable development and protection of shared
+              resources/commons. It aims to create systems that restore,
+              regenerate, and replenish the natural and social capital.
+            </CardDescription>
           </CardContent>
-
-          <hr
-            style={{
-              borderTop: "1px solid #9b9c9e",
-              margin: "15px 15px 15px 0",
-              paddingBottom: "8px",
-            }}
-          />
-          <CardDescription style={{ fontSize: "12px", textAlign: "center" }}>
-            Commons protocol is a community-driven initiative designed to
-            incentivize the sustainable development and protection of shared
-            resources/commons. It aims to create systems that restore,
-            regenerate, and replenish the natural and social capital.
-          </CardDescription>
         </Card>
-
-        <br />
       </div>
     </main>
   );
