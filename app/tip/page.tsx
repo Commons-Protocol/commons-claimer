@@ -426,7 +426,7 @@ export default function TipPage() {
                 </div>
               </form>
             </Form>
-            {/* <div className="text-center flex flex-col gap-1">
+            <div className="text-center flex flex-col gap-1">
               <p className="items-center my-2">or</p>
 
               <DooglyTippingButton
@@ -436,10 +436,10 @@ export default function TipPage() {
                 config={{
                   destinationChain: "celo",
                   destinationAddress:
-                    "0xFa1aD6310C6540c5430F9ddA657FCE4BdbF1f4df",
-                  receiverAddress: dooglyRecipient,
+                    "0xFa1aD6310C6540c5430F9ddA657FCE4BdbF1f4df", // Doogly Gateway on Celo
+                  receiverAddress: dooglyRecipient, // Tip recipient
                   destinationOutputTokenAddress:
-                    "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e",
+                    "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e", // $COMMONS on Celo
                 }}
                 buttonClassName="w-full"
                 modalStyles={{
@@ -471,7 +471,7 @@ export default function TipPage() {
                   </Tooltip>
                 </TooltipProvider>
               </div>
-            </div> */}
+            </div>
           </CardContent>
         </Card>
       </div>
