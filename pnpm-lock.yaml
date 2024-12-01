@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@doogly/doogly-donate-component':
-        specifier: ^1.0.7
-        version: 1.0.7(@types/react-dom@18.3.1)(@types/react@18.2.64)(ethers@6.13.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.27.4)(typescript@5.6.3)
+        specifier: ^1.0.9
+        version: 1.0.9(@types/react-dom@18.3.1)(@types/react@18.2.64)(ethers@6.13.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.27.4)(typescript@5.6.3)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.53.0(react@18.3.1))
@@ -852,8 +852,8 @@ packages:
   '@coinbase/wallet-sdk@4.0.4':
     resolution: {integrity: sha512-74c040CRnGhfRjr3ArnkAgud86erIqdkPHNt5HR1k9u97uTIZCJww9eGYT67Qf7gHPpGS/xW8Be1D4dvRm63FA==}
 
-  '@doogly/doogly-donate-component@1.0.7':
-    resolution: {integrity: sha512-nWh25GmZng/xKVvqmH8FIouv8tcvClUTJb4RQH/asz9V1vaYR3/gvWuCCgTRj48N6dLlMi7JvTh3qYjTzeJ7LQ==}
+  '@doogly/doogly-donate-component@1.0.9':
+    resolution: {integrity: sha512-vX0IYfeyYvTm0Nei/rok/hONX+7qexRMDnUM018D2ZTGrspwUDxirImMDIokIUl9pqcLIaN6WItjOnGXwsSqyw==}
     peerDependencies:
       ethers: ^6.0.0
       react: '>=16.8.0'
@@ -6609,7 +6609,7 @@ snapshots:
       preact: 10.24.3
       sha.js: 2.4.11
 
-  '@doogly/doogly-donate-component@1.0.7(@types/react-dom@18.3.1)(@types/react@18.2.64)(ethers@6.13.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.27.4)(typescript@5.6.3)':
+  '@doogly/doogly-donate-component@1.0.9(@types/react-dom@18.3.1)(@types/react@18.2.64)(ethers@6.13.4(bufferutil@4.0.8)(utf-8-validate@5.0.10))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.27.4)(typescript@5.6.3)':
     dependencies:
       '@radix-ui/react-dialog': 1.1.2(@types/react-dom@18.3.1)(@types/react@18.2.64)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-label': 2.1.0(@types/react-dom@18.3.1)(@types/react@18.2.64)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
