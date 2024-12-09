@@ -10,7 +10,7 @@
     "clean": "rm -rf node_modules .next"
   },
   "dependencies": {
-    "@doogly/doogly-donate-component": "^1.0.7",
+    "@doogly/doogly-donate-component": "^1.0.10",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
