@@ -431,7 +431,7 @@ export default function TipPage() {
 
               <DooglyTippingButton
                 key={dooglyRecipient}
-                buttonText="Tip with Doogly"
+                buttonText="Tip with Doogly (beta)"
                 modalTitle="Make a Donation"
                 config={{
                   destinationChain: "celo",
