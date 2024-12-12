@@ -6,21 +6,27 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import DonateDrop from "@/components/ui/DonateDrop";
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDonateOpen, setIsDonateOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDonate = () => {
+    setIsDonateOpen(false);
   };
 
   const menuItems = [
     { href: "/", label: "Earn" },
     { href: "/manifesto", label: "Manifesto" },
     { href: "/token", label: "Token" },
-    { href: "/membership", label: "Membership" },
-    {
-      href: "https://app.uniswap.org/explore/tokens/celo/0x7b97031b6297bc8e030b07bd84ce92fea1b00c3e",
-      label: "Swap",
+    { 
+      href: "https://app.charmverse.io/commons-protocol/forum", 
+      label: "Forum",
       newTab: true,
     },
     {
@@ -29,11 +35,12 @@ const Header = () => {
       newTab: true,
     },
     { href: "/tip", label: "Tip" },
-    { href: "/inspect", label: "Distribution" },
+    // { href: "/donate", label: "Donate" },
     //{href: 'https://guild.xyz/commons', label: 'Guild', newTab: true}
   ];
 
   return (
+    <>
     <nav className="border-gray-200 px-4 lg:px-6 py-5 bg-white">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         {/* Logo */}
@@ -76,6 +83,12 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li
+            onClick={()=> setIsDonateOpen(true)}
+            className="text-gray-700 hover:cursor-pointer hover:text-primary-700 transition-colors duration-200"
+            >
+              Donate
+            </li>
           </ul>
         </div>
 
@@ -101,10 +114,26 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li
+            onClick={()=> {
+              setIsMenuOpen(false)
+              setIsDonateOpen(true)
+            }}
+            className="text-gray-700 hover:cursor-pointer hover:text-primary-700 transition-colors duration-200"
+            >
+              Donate
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+    {isDonateOpen &&
+
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" >
+      <DonateDrop toggleDonate={toggleDonate}/>
+    </div>
+    }
+    </>
   );
 };
 
