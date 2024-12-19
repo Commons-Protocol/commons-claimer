@@ -9,6 +9,7 @@ import {mainnet} from "@wagmi/core/chains";
 import { WagmiProvider } from "wagmi";
 import { celo } from "wagmi/chains";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -40,6 +41,7 @@ export default function RootLayout({
               <Header />
               <Toaster />
               {children}
+              <Footer />
             </RainbowKitProvider>
           </QueryClientProvider>
         </WagmiProvider>
