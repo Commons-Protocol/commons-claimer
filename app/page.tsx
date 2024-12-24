@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { DooglyDonateButton } from "@doogly/doogly-donate-component";
 import { Coins, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -129,6 +129,34 @@ export default function CommonsTokenClaimPage() {
     }
   }, [isSuccess, isError, hash, toast]);
 
+  const dooglyDonateButton = (
+    <div className="text-center flex flex-col gap-1">
+      <DooglyDonateButton
+        buttonText="Donate to Commons"
+        modalTitle="Donate to Commons"
+        config={{
+          destinationChain: "celo",
+          destinationAddress: "0xFa1aD6310C6540c5430F9ddA657FCE4BdbF1f4df", // Doogly Gateway on Celo,
+          splitsAddress: rewardConfig.address,
+          hypercertFractionId: "25521177519070384759753095557382615859200", // Commons hypercert
+          poolId: 0,
+          destinationOutputTokenAddress:
+            "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e", // $COMMONS on Celo
+        }}
+        buttonClassName="w-full"
+        modalStyles={{
+          backgroundColor: "white",
+          headingColor: "black",
+          textColor: "white",
+          buttonColor: "black",
+        }}
+      />
+      <span className="text-xs text-gray-700">
+        {"(All the donation goes to $COMMONS reward pool for builders)"}
+      </span>
+    </div>
+  );
+
   return (
     <main>
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-gray-100 p-4">
@@ -195,56 +223,56 @@ export default function CommonsTokenClaimPage() {
                 </Alert>
               )}
             {!whitelisted.data && (
-              <Button
-                style={{
-                  padding: "25px 15px",
-                  marginTop: "40px",
-                  borderRadius: "15px",
-                }}
-              >
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdX2KEoikI8g2XR8LSuG_7AuVq9ThD_dJCUutvKcUczWDUSkQ/viewform?usp=sf_link">
-                  Apply to join the commons community
-                </a>
-              </Button>
+              <div className="flex flex-col gap-y-5">
+                <Button className="w-full">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdX2KEoikI8g2XR8LSuG_7AuVq9ThD_dJCUutvKcUczWDUSkQ/viewform?usp=sf_link">
+                    Apply to join the commons community
+                  </a>
+                </Button>
+                {dooglyDonateButton}
+              </div>
             )}
             {whitelisted.data && (
-              <Button
-                onClick={() =>
-                  writeContract(
-                    {
-                      abi: rewardConfig.abi,
-                      address: rewardConfig.address as `0x${string}`,
-                      functionName: "claimReward",
-                    },
-                    {
-                      onSuccess: () => {
-                        toast({
-                          title: "Success",
-                          description: "tx sent successfully.",
-                        });
+              <div className="flex flex-col gap-y-5">
+                <Button
+                  onClick={() =>
+                    writeContract(
+                      {
+                        abi: rewardConfig.abi,
+                        address: rewardConfig.address as `0x${string}`,
+                        functionName: "claimReward",
                       },
-                      onError: (e) => {
-                        toast({
-                          variant: "destructive",
-                          title: "Error",
-                          description: e.message,
-                        });
-                      },
-                    }
-                  )
-                }
-                className="w-full"
-                disabled={isLoading || !account.isConnected || !canClaim.data}
-              >
-                {isLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4" />
-                ) : (
-                  <Coins className="mr-2 h-4 w-4" />
-                )}
-                {!canClaim.data
-                  ? "Patience, young commoner"
-                  : "Claim 10 $COMMONS"}
-              </Button>
+                      {
+                        onSuccess: () => {
+                          toast({
+                            title: "Success",
+                            description: "tx sent successfully.",
+                          });
+                        },
+                        onError: (e) => {
+                          toast({
+                            variant: "destructive",
+                            title: "Error",
+                            description: e.message,
+                          });
+                        },
+                      }
+                    )
+                  }
+                  className="w-full"
+                  disabled={isLoading || !account.isConnected || !canClaim.data}
+                >
+                  {isLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4" />
+                  ) : (
+                    <Coins className="mr-2 h-4 w-4" />
+                  )}
+                  {!canClaim.data
+                    ? "Patience, young commoner"
+                    : "Claim 10 $COMMONS"}
+                </Button>
+                {dooglyDonateButton}
+              </div>
             )}
             {whitelisted.data && (
               <div className="text-center items-center">
