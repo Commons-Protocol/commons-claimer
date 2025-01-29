@@ -30,7 +30,7 @@ const Header = () => {
       newTab: true,
     },
     {
-      href: "https://app.ubeswap.org/#/stakes/0x8585A611521717Ffe7d93cF264DbE936E484DBa0",
+      href: "https://app.ubeswap.org/#/earn/stakes",
       label: "Staking",
       newTab: true,
     },

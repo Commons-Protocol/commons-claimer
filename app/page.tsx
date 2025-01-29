@@ -180,9 +180,9 @@ export default function CommonsTokenClaimPage() {
                 <Alert>
                   <AlertTitle>Earn extra rewards</AlertTitle>
                   <AlertDescription>
-                    Get additional income by staking your COMMONS tokens.
+                    Get additional income in USDGLO, by staking your COMMONS tokens.
                     <Link
-                      href="https://app.ubeswap.org/#/stakes/0x8585A611521717Ffe7d93cF264DbE936E484DBa0"
+                      href="https://app.ubeswap.org/#/stakes/0xfB8cA52748E70F887E9B8C5ffBb611D1eA4cC725"
                       className="font-medium underline underline-offset-4"
                       rel="noopener noreferrer"
                       target="_blank"
