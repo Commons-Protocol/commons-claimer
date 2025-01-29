@@ -212,7 +212,17 @@ export default function CommonsTokenClaimPage() {
                 <Alert>
                   <AlertTitle>Earn extra rewards</AlertTitle>
                   <AlertDescription>
-                    Get additional income in USDGLO, by staking your COMMONS tokens ({stakingApr ? `${stakingApr.toFixed(2)}% APR` : 'Loading APR...'} on Ubeswap)
+                    Get additional income in <Link
+                      href="https://celoscan.io/token/0x4f604735c1cf31399c6e711d5962b2b3e0225ad3"
+                      className="font-medium underline underline-offset-4"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >USDGLO</Link>, by staking your <Link
+                      href="https://celoscan.io/token/0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e"
+                      className="font-medium underline underline-offset-4"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >COMMONS</Link> tokens.
                     <Link
                       href="https://app.ubeswap.org/#/stakes/0xfB8cA52748E70F887E9B8C5ffBb611D1eA4cC725"
                       className="font-medium underline underline-offset-4"
@@ -221,7 +231,7 @@ export default function CommonsTokenClaimPage() {
                     >
                       <br />
                       <br />
-                      Stake on Ubeswap
+                      Stake on Ubeswap {stakingApr ? `(APR: ~${Math.round(stakingApr)}%)` : '(Loading APR...)'}
                     </Link>
                   </AlertDescription>
                 </Alert>
