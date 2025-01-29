@@ -33,6 +33,7 @@ import { formatTime, formatTokenAmount, TOKEN_ADDRESS } from "@/utils";
 
 export default function CommonsTokenClaimPage() {
   const [tokenPrice, setTokenPrice] = useState(null);
+  const [stakingApr, setStakingApr] = useState<number | null>(null);
 
   const { toast } = useToast();
   const account = useAccount();
@@ -129,6 +130,37 @@ export default function CommonsTokenClaimPage() {
     }
   }, [isSuccess, isError, hash, toast]);
 
+  useEffect(() => {
+    const fetchStakingApr = async () => {
+      try {
+        const response = await fetch('https://interface-gateway.ubeswap.org/v1/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            operationName: 'Stakes',
+            variables: {},
+            query: ''  // Empty query as per the working example
+          })
+        });
+        
+        const data = await response.json();
+        // Find the APR for the COMMONS staking pool using stakingRewardAddress
+        const commonsStake = data.find(
+          (stake: any) => stake.stakingRewardAddress.toLowerCase() === '0xfB8cA52748E70F887E9B8C5ffBb611D1eA4cC725'.toLowerCase()
+        );
+        if (commonsStake) {
+          setStakingApr(Number(commonsStake.apr));
+        }
+      } catch (error) {
+        console.error('Error fetching staking APR:', error);
+      }
+    };
+
+    fetchStakingApr();
+  }, []);
+
   return (
     <main>
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-gray-100 p-4">
@@ -180,7 +212,17 @@ export default function CommonsTokenClaimPage() {
                 <Alert>
                   <AlertTitle>Earn extra rewards</AlertTitle>
                   <AlertDescription>
-                    Get additional income in USDGLO, by staking your COMMONS tokens.
+                    Get additional income in <Link
+                      href="https://celoscan.io/token/0x4f604735c1cf31399c6e711d5962b2b3e0225ad3"
+                      className="font-medium underline underline-offset-4"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >USDGLO</Link>, by staking your <Link
+                      href="https://celoscan.io/token/0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e"
+                      className="font-medium underline underline-offset-4"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >COMMONS</Link> tokens.
                     <Link
                       href="https://app.ubeswap.org/#/stakes/0xfB8cA52748E70F887E9B8C5ffBb611D1eA4cC725"
                       className="font-medium underline underline-offset-4"
@@ -189,7 +231,7 @@ export default function CommonsTokenClaimPage() {
                     >
                       <br />
                       <br />
-                      Stake on Ubeswap
+                      Stake on Ubeswap {stakingApr ? `(APR: ~${Math.round(stakingApr)}%)` : '(Loading APR...)'}
                     </Link>
                   </AlertDescription>
                 </Alert>
