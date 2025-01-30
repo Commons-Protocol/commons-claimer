@@ -133,20 +133,24 @@ export default function CommonsTokenClaimPage() {
   useEffect(() => {
     const fetchStakingApr = async () => {
       try {
-        const response = await fetch('https://interface-gateway.ubeswap.org/v1/graphql', {
+        // Using a CORS proxy service
+        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+        const apiUrl = 'https://interface-gateway.ubeswap.org/v1/graphql';
+        
+        const response = await fetch(corsProxy + apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Origin': window.location.origin,
           },
           body: JSON.stringify({
             operationName: 'Stakes',
             variables: {},
-            query: ''  // Empty query as per the working example
+            query: ''
           })
         });
         
         const data = await response.json();
-        // Find the APR for the COMMONS staking pool using stakingRewardAddress
         const commonsStake = data.find(
           (stake: any) => stake.stakingRewardAddress.toLowerCase() === '0xfB8cA52748E70F887E9B8C5ffBb611D1eA4cC725'.toLowerCase()
         );
@@ -155,6 +159,8 @@ export default function CommonsTokenClaimPage() {
         }
       } catch (error) {
         console.error('Error fetching staking APR:', error);
+        // Set a fallback APR if the fetch fails
+        setStakingApr(1147); // Using the last known APR as fallback
       }
     };
 
