@@ -133,19 +133,9 @@ export default function CommonsTokenClaimPage() {
   useEffect(() => {
     const fetchStakingApr = async () => {
       try {
-        const response = await fetch('https://interface-gateway.ubeswap.org/v1/graphql', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            operationName: 'Stakes',
-            variables: {},
-            query: ''  // Empty query as per the working example
-          })
-        });
-        
+        const response = await fetch('/api/staking-apr');
         const data = await response.json();
+        
         // Find the APR for the COMMONS staking pool using stakingRewardAddress
         const commonsStake = data.find(
           (stake: any) => stake.stakingRewardAddress.toLowerCase() === '0xfB8cA52748E70F887E9B8C5ffBb611D1eA4cC725'.toLowerCase()
@@ -166,7 +156,7 @@ export default function CommonsTokenClaimPage() {
 
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
-  }, []); // Empty dependency array is fine here since we're using setInterval
+  }, []);
 
   return (
     <main>
