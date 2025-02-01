@@ -228,7 +228,7 @@ export default function CommonsTokenClaimPage() {
                     >
                       <br />
                       <br />
-                      Stake on Ubeswap {stakingApr ? `(APR: ~${Math.round(stakingApr)}%)` : '(Loading APR...)'}
+                      Stake on Ubeswap {stakingApr ? `| APR: ~${Math.round(stakingApr)}%` : '| Loading APR...'}
                     </Link>
                   </AlertDescription>
                 </Alert>
