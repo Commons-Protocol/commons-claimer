@@ -164,8 +164,15 @@ export default function CommonsTokenClaimPage() {
       }
     };
 
+    // Fetch immediately
     fetchStakingApr();
-  }, []);
+
+    // Then fetch every 30 seconds
+    const interval = setInterval(fetchStakingApr, 30000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, []); // Empty dependency array is fine here since we're using setInterval
 
   return (
     <main>
